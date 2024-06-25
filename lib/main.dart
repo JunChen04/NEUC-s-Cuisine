@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:neuc_cuisine/login.dart';
+=======
+import 'package:neuc_cuisine/mainPage.dart';
+>>>>>>> 61c6ec8f21e5e8faece7fb5845ead923ba586e2e
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +36,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+<<<<<<< HEAD
       home: const LoginPage(),
+=======
+      home: Mainpage(),
+>>>>>>> 61c6ec8f21e5e8faece7fb5845ead923ba586e2e
     );
   }
 }
