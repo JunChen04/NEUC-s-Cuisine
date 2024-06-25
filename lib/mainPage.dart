@@ -61,23 +61,6 @@ class _MainpageState extends State<Mainpage> {
                     color: Colors.white,
                     size: 500,
                   ),
-                  // Container(
-                  //   alignment: Alignment(0.5, 0.55),
-                  //   child: TextButton(
-                  //       onPressed: () {
-                  //         //go to login page
-                  //       },
-                  //       style: TextButton.styleFrom(
-                  //         backgroundColor: Color(0xFFED4545),
-                  //         shape: RoundedRectangleBorder(
-                  //             borderRadius: BorderRadius.circular(8)),
-                  //       ),
-                  //       child: Text('Get Started',
-                  //           style: GoogleFonts.bebasNeue(
-                  //             color: Colors.white,
-                  //             fontSize: 40,
-                  //           ))),
-                  // )
                 ],
               ),
             )
