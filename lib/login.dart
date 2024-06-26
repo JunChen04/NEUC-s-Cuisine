@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:neuc_cuisine/registerPage.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -83,6 +84,10 @@ class LoginPage extends StatelessWidget {
                 TextButton(
                     onPressed: () {
                       // Handle login logic here
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Registerpage()),
+                      );
                     },
                     child: Text(
                       "Sign up right now !",

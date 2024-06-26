@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:neuc_cuisine/login.dart';
 import 'package:neuc_cuisine/registerPage.dart';
 
 class Mainpage extends StatefulWidget {
@@ -33,7 +34,7 @@ class _MainpageState extends State<Mainpage> {
     Future.delayed(Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Register()),
+        MaterialPageRoute(builder: (context) => LoginPage()),
       );
     });
   }
