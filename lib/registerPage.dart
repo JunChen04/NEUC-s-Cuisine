@@ -176,6 +176,7 @@ class _RegisterpageState extends State<Registerpage> {
                   ),
                 ),
                 SizedBox(height: 15),
+
                 // Register Button
                 ElevatedButton(
                   onPressed: _register,
