@@ -29,7 +29,10 @@ class _RegisterpageState extends State<LoginPage> {
       // Registration successful, to login page
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Homepage()),
+        MaterialPageRoute(
+            builder: (context) => Homepage(
+                  email: email,
+                )),
       );
     }
   }
