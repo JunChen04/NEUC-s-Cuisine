@@ -12,8 +12,7 @@ import 'package:neuc_cuisine/models/restaurant.dart';
 import 'package:provider/provider.dart';
 
 class Homepage extends StatefulWidget {
-  final String email;
-  const Homepage({super.key, required this.email});
+  const Homepage({super.key});
 
   @override
   State<Homepage> createState() => _HomepageState();
