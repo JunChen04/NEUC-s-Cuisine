@@ -9,10 +9,10 @@ class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _RegisterpageState();
+  State<LoginPage> createState() => _LoginpageState();
 }
 
-class _RegisterpageState extends State<LoginPage> {
+class _LoginpageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -29,7 +29,10 @@ class _RegisterpageState extends State<LoginPage> {
       // Registration successful, to login page
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Homepage()),
+        MaterialPageRoute(
+            builder: (context) => Homepage(
+                  email: email,
+                )),
       );
     }
   }

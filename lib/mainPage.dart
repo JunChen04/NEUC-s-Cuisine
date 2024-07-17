@@ -31,7 +31,7 @@ class _MainpageState extends State<Mainpage> {
   void initState() {
     super.initState();
     // Simulate a delay and navigate to the login page after a few seconds
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),
