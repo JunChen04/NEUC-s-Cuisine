@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neuc_cuisine/checkOut.dart';
 import 'package:neuc_cuisine/components/myCartTile.dart';
 import 'package:neuc_cuisine/models/restaurant.dart';
 import 'package:provider/provider.dart';
@@ -102,7 +103,12 @@ class Cartpage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 35),
               child: ElevatedButton(
                 onPressed: () {
-                  //to payment page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CheckOut(),
+                    ),
+                  ); //to payment page
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFFED4545),

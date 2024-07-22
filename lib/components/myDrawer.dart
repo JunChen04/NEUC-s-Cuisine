@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:neuc_cuisine/components/myDrawTile.dart';
-import 'package:neuc_cuisine/settingsPage.dart';
+import 'package:neuc_cuisine/profile.dart';
+// import 'package:neuc_cuisine/settingsPage.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -46,7 +47,7 @@ class MyDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SettingsPage(),
+                  builder: (context) => const MyProfile(),
                 ),
               );
             },
