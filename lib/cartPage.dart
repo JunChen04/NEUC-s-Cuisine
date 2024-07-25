@@ -17,8 +17,8 @@ class Cartpage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: const Text("Cart"),
-            backgroundColor: const Color(0xFFED4545),
-            foregroundColor: Colors.white,
+            foregroundColor: const Color(0xFFED4545),
+            backgroundColor: Colors.grey[100],
             actions: [
               //clear cart button
               IconButton(
@@ -40,6 +40,7 @@ class Cartpage extends StatelessWidget {
                   icon: const Icon(Icons.delete))
             ],
           ),
+          backgroundColor: Colors.grey[200],
           body: Center(
             child: Text(
               "Nothing is in here...",

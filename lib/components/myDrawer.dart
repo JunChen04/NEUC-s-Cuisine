@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:neuc_cuisine/components/myDrawTile.dart';
@@ -6,6 +7,11 @@ import 'package:neuc_cuisine/profile.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
+
+  //sign user out
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +65,7 @@ class MyDrawer extends StatelessWidget {
           MyDrawTile(
             text: "L O G O U T",
             icon: Icons.logout,
-            onTap: () {
-              Navigator.pop(context);
-            },
+            onTap: signUserOut,
           ),
 
           SizedBox(height: 25),

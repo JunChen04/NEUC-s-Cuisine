@@ -1,10 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neuc_cuisine/login.dart';
 
 class Registerpage extends StatefulWidget {
-  const Registerpage({super.key});
+  final VoidCallback showLoginPage;
+  const Registerpage({super.key, required this.showLoginPage});
 
   @override
   State<Registerpage> createState() => _RegisterpageState();
@@ -16,25 +18,56 @@ class _RegisterpageState extends State<Registerpage> {
   final _confirmPasswordController = TextEditingController();
   final _phoneController = TextEditingController();
 
-  void _register() {
-    final email = _emailController.text;
-    final password = _passwordController.text;
-    final confirmPassword = _confirmPasswordController.text;
-    final phone = _phoneController.text;
+  void registerUser() async {
+    // Show loading circle
+    // showDialog(
+    //   context: context,
+    //   builder: (context) {
+    //     return Center(
+    //       child: CircularProgressIndicator(),
+    //     );
+    //   },
+    // );
 
-    if (email.isEmpty ||
-        password.isEmpty ||
-        confirmPassword.isEmpty ||
-        phone.isEmpty) {
+    if (_emailController.text.isEmpty ||
+        _passwordController.text.isEmpty ||
+        _confirmPasswordController.text.isEmpty ||
+        _phoneController.text.isEmpty) {
       _showErrorDialog('All fields are required');
-    } else if (password != confirmPassword) {
+      return;
+    } else if (_passwordController.text != _confirmPasswordController.text) {
       _showErrorDialog('Passwords do not match');
+      return;
     } else {
-      // Registration successful, to login page
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
-      );
+      // Try sign in
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
+        // If successful, pop the loading dialog
+        // Navigator.pop(context);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginPage(
+              showRegisterPage: () {},
+            ),
+          ),
+        );
+      } on FirebaseAuthException catch (e) {
+        // Pop the loading circle
+        // Navigator.pop(context);
+
+        // Show error message
+        if (e.code == 'weak-password') {
+          weakPasswordMessage();
+        } else if (e.code == 'email-already-in-use') {
+          wrongEmailMessage();
+        } else {
+          generalErrorMessage(e.message);
+        }
+      }
     }
   }
 
@@ -43,31 +76,107 @@ class _RegisterpageState extends State<Registerpage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Color(0xFFED4545),
-          title: Text(
-            'Error',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          content: Text(
-            message,
-            style: TextStyle(color: Colors.white),
-          ),
+          title: Text('Error'),
+          content: Text(message),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
-                'OK',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
+              child: Text('OK'),
             ),
           ],
         );
       },
     );
   }
+
+  void wrongEmailMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Invalid Email'),
+          content: Text('Email in use.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void weakPasswordMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Weak Password'),
+          content: Text('Weak password provided for the user.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void generalErrorMessage(String? message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content:
+              Text(message ?? 'An unknown error occurred. Please try again.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _phoneController.dispose();
+    super.dispose();
+  }
+
+  // Future signUp() async {
+  //   if (passwordConfirmed()) {
+  //     await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  //         email: _emailController.text.trim(),
+  //         password: _passwordController.text.trim());
+  //   }
+  // }
+
+  // bool passwordConfirmed() {
+  //   if (_passwordController.text.trim() ==
+  //       _confirmPasswordController.text.trim()) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -178,21 +287,27 @@ class _RegisterpageState extends State<Registerpage> {
                 SizedBox(height: 15),
 
                 // Register Button
-                ElevatedButton(
-                  onPressed: _register,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFED4545),
-                    foregroundColor: Colors.white,
-                    textStyle: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: GestureDetector(
+                    onTap: registerUser,
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFED4545),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Sign Up',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
+                        ),
+                      ),
                     ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    minimumSize: Size(200, 60),
                   ),
-                  child: Text('Register'),
                 ),
                 SizedBox(height: 10),
                 // Already Registered
@@ -203,19 +318,27 @@ class _RegisterpageState extends State<Registerpage> {
                       'Already registered?',
                       style: TextStyle(color: Color(0xFFED4545)),
                     ),
-                    TextButton(
-                      onPressed: () {
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to Register page
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(
+                              builder: (context) => LoginPage(
+                                    showRegisterPage: () {},
+                                  )),
                         );
                       },
-                      child: Text(
-                        'Login now',
-                        style: TextStyle(
-                          color: Color(0xFFED4545),
-                          fontWeight: FontWeight.bold,
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            ' Login now',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFED4545)),
+                          )
+                        ],
                       ),
                     ),
                   ],

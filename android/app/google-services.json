@@ -1,32 +1,13 @@
 {
   "project_info": {
-    "project_number": "358564588826",
-    "project_id": "fir-test-4dc13",
-    "storage_bucket": "fir-test-4dc13.appspot.com"
+    "project_number": "1008087885998",
+    "project_id": "neuccuisine-2899f",
+    "storage_bucket": "neuccuisine-2899f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:358564588826:android:dbf3731b4dd0f9e541d0a3",
-        "android_client_info": {
-          "package_name": "com.example.flutter_application_1"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAu6IQNbrOOUEBgfh7duua3129hfbrk6OI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:358564588826:android:8d558e6c29ef757441d0a3",
+        "mobilesdk_app_id": "1:1008087885998:android:8e91d6b7e1ed4d7a67e53f",
         "android_client_info": {
           "package_name": "com.example.neuc_cuisine"
         }
@@ -34,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAu6IQNbrOOUEBgfh7duua3129hfbrk6OI"
+          "current_key": "AIzaSyD05pzGUSwV0DyYi1u_1_PxBnUpWTaJ1pw"
         }
       ],
       "services": {

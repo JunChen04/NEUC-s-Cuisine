@@ -31,18 +31,18 @@ class Mysilverappbar extends StatelessWidget {
             );
           },
           icon: const Icon(Icons.shopping_cart),
-          // color: Colors.white,
+          color: Color(0xFFED4545),
         )
       ],
-      backgroundColor: Color(0xFFED4545),
-      foregroundColor: Colors.white,
+      foregroundColor: Color(0xFFED4545),
+      backgroundColor: Colors.grey[100],
       title: const Text(
         "NEUC CUISINE",
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
-          padding: const EdgeInsets.only(bottom: 50.0),
+          padding: const EdgeInsets.only(bottom: 90.0),
           child: child,
         ),
         title: title,

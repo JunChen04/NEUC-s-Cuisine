@@ -20,8 +20,9 @@ class Mytabbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedColor = Colors.white70; // Change this to your desired color
-    final unselectedColor = Colors.white;
+    final selectedColor =
+        Color(0xFFED4545); // Change this to your desired color
+    final unselectedColor = Colors.grey;
 
     return Container(
       child: TabBar(

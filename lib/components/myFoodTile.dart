@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:neuc_cuisine/models/food.dart';
 
 class Myfoodtile extends StatelessWidget {
@@ -26,20 +27,24 @@ class Myfoodtile extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(food.name),
+                      Text(
+                        food.name,
+                        style: GoogleFonts.allerta(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
                       Text(
                         "RM " + food.price.toString(),
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary),
+                        style: GoogleFonts.allerta(color: Color(0xFFED4545)),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       Text(
                         food.description,
-                        style: TextStyle(
-                            color:
-                                Theme.of(context).colorScheme.inversePrimary),
+                        style: GoogleFonts.kanit(
+                            color: const Color.fromARGB(255, 88, 88, 88)),
                       ),
                     ],
                   ),

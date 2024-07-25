@@ -13,7 +13,8 @@ class Restaurant extends ChangeNotifier {
             "Traditional Pan Mee which is also the noodles that you can eat in NEUC",
         imagePath:
             // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/panmee.jpg"
-            "C:/Users/User/Desktop/neuc_cuisine/lib/images/panmee.jpg",
+            "C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/panmee.jpg",
+        // "C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/chillipanmee.jpg",
         price: 7.50,
         category: FoodCategory.PanMee,
         availableAddons: [
@@ -26,7 +27,7 @@ class Restaurant extends ChangeNotifier {
             "Traditional spicy Pan Mee with a lot of chili, once a wise man said: If you can't eat spicy then you are not Malaysian",
         imagePath:
             // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/chillipanmee.jpg"
-            "C:/Users/User/Desktop/neuc_cuisine/lib/images/chillipanmee.jpg",
+            "C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/chillipanmee.jpg",
         price: 9.00,
         category: FoodCategory.PanMee,
         availableAddons: [
@@ -38,7 +39,7 @@ class Restaurant extends ChangeNotifier {
         description: "Kuey Teow Soup, nothing special, but no choice",
         imagePath:
             // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/chillipanmee.jpg"
-            "C:/Users/User/Desktop/neuc_cuisine/lib/images/kueyteow.jpg",
+            "C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/kueyteow.jpg",
         price: 9.00,
         category: FoodCategory.PanMee,
         availableAddons: [
@@ -54,7 +55,7 @@ class Restaurant extends ChangeNotifier {
         description:
             "Fried noodles with a lot of spices which might make someone diarrhea, but it's considered cheap in NEUC, so who cares?",
         imagePath:
-            "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/meegoreng.jpg",
+            "C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/meegoreng.jpg",
         price: 6.00,
         category: FoodCategory.MakMak,
         availableAddons: [

@@ -15,7 +15,10 @@ class _MyProfileState extends State<MyProfile> {
   void _signOut() {
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
+      MaterialPageRoute(
+          builder: (context) => LoginPage(
+                showRegisterPage: () {},
+              )),
       (Route<dynamic> route) => false,
     );
   }
