@@ -15,13 +15,18 @@ class _CheckOutState extends State<CheckOut> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("C H E C K O U T"),
+        title: Text(
+          "C H E C K O U T",
+        ),
+        foregroundColor: Colors.white,
+        backgroundColor: Color(0xFFED4545),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
+            icon: Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
             }),
       ),
+      backgroundColor: Colors.grey[200],
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 16, 30, 16),
         child: Column(
@@ -46,7 +51,7 @@ class _CheckOutState extends State<CheckOut> {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Color(0xffF8F8F8),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.blueAccent)),
               child: Column(
@@ -108,7 +113,7 @@ class _CheckOutState extends State<CheckOut> {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Color(0xffF8F8F8),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.blueAccent)),
               child: Column(
@@ -177,7 +182,7 @@ class _CheckOutState extends State<CheckOut> {
                 width: 250.0, // Set the desired width here
                 child: MaterialButton(
                   onPressed: () {},
-                  color: Color(0xffFA4A0C), // Button color
+                  color: Color(0xFFED4545), // Button color
                   textColor: Colors.white, // Button text color
                   padding: EdgeInsets.all(16.0), // Button padding
                   shape: RoundedRectangleBorder(

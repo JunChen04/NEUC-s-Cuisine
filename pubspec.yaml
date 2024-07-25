@@ -63,10 +63,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/chillipanmee.jpg
-    - C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/kueyteow.jpg
-    - C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/meegoreng.jpg
-    - C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/panmee.jpg
+    - C:/Users/User/Desktop/neuc_cuisine/lib/images/chillipanmee.jpg
+    - C:/Users/User/Desktop/neuc_cuisine/lib/images/kueyteow.jpg
+    - C:/Users/User/Desktop/neuc_cuisine/lib/images/meegoreng.jpg
+    - C:/Users/User/Desktop/neuc_cuisine/lib/images/panmee.jpg
+    # - C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/chillipanmee.jpg
+    # - C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/kueyteow.jpg
+    # - C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/meegoreng.jpg
+    # - C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/panmee.jpg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

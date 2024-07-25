@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neuc_cuisine/cartPage.dart';
 import 'package:neuc_cuisine/homePage.dart';
 // Import your login page
 import 'package:neuc_cuisine/login.dart';
@@ -12,23 +13,24 @@ class MyProfile extends StatefulWidget {
 
 class _MyProfileState extends State<MyProfile> {
   // Function to sign out and navigate to login page
-  void _signOut() {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(
-          builder: (context) => LoginPage(
-                showRegisterPage: () {},
-              )),
-      (Route<dynamic> route) => false,
-    );
-  }
+  // void _signOut() {
+  //   Navigator.pushAndRemoveUntil(
+  //     context,
+  //     MaterialPageRoute(
+  //         builder: (context) => LoginPage(
+  //               showRegisterPage: () {},
+  //             )),
+  //     (Route<dynamic> route) => false,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF8F8F8),
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Color(0xFFF8F8F8),
+        foregroundColor: Colors.white,
+        backgroundColor: Color(0xFFED4545),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new),
           onPressed: () {
@@ -37,7 +39,6 @@ class _MyProfileState extends State<MyProfile> {
         ),
         title: Text(
           'S E T T I N G',
-          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       body: Padding(
@@ -50,10 +51,12 @@ class _MyProfileState extends State<MyProfile> {
               children: [
                 Text(
                   'Personal Details',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    //profile page
+                  },
                   child: Text(
                     'Change',
                     style: TextStyle(color: Color(0xFFED4545), fontSize: 15),
@@ -65,12 +68,11 @@ class _MyProfileState extends State<MyProfile> {
             Container(
               padding: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10)),
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
               child: Row(
                 children: [
                   Container(
-                    height: 100,
+                    height: 150,
                     width: 100,
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -98,15 +100,23 @@ class _MyProfileState extends State<MyProfile> {
             Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10)),
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Cart',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                  Icon(Icons.arrow_forward_ios)
+                  IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Cartpage(),
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.arrow_forward_ios))
                 ],
               ),
             ),
@@ -116,15 +126,24 @@ class _MyProfileState extends State<MyProfile> {
             Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10)),
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Status',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                  Icon(Icons.arrow_forward_ios)
+                  IconButton(
+                      onPressed: () {
+                        //to status page
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => Cartpage(),
+                        //   ),
+                        // );
+                      },
+                      icon: Icon(Icons.arrow_forward_ios))
                 ],
               ),
             ),
@@ -134,39 +153,76 @@ class _MyProfileState extends State<MyProfile> {
             Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10)),
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('FAQ',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                  Icon(Icons.arrow_forward_ios)
+                  IconButton(
+                      onPressed: () {
+                        // to FAQ page
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => Cartpage(),
+                        //   ),
+                        // );
+                      },
+                      icon: Icon(Icons.arrow_forward_ios))
                 ],
               ),
             ),
             SizedBox(
               height: 10,
             ),
-            GestureDetector(
-              onTap: _signOut,
-              child: Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(10)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Sign Out',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
-                    Icon(Icons.arrow_forward_ios),
-                  ],
-                ),
+            Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Sign Out',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginPage(
+                              showRegisterPage: () {},
+                            ),
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.arrow_forward_ios))
+                ],
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            // GestureDetector(
+            //   onTap: _signOut,
+            //   child: Container(
+            //     padding: EdgeInsets.all(10),
+            //     decoration: BoxDecoration(
+            //         color: Colors.white,
+            //         borderRadius: BorderRadius.circular(10)),
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //       children: [
+            //         Text('Sign Out',
+            //             style: TextStyle(
+            //                 fontWeight: FontWeight.bold, fontSize: 20)),
+            //         Icon(Icons.arrow_forward_ios),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
