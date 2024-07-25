@@ -18,13 +18,7 @@ class Food {
 
 //food categories
 
-enum FoodCategory {
-  PanMee,
-  MakMak,
-  Rice,
-  Beverages,
-  Pau,
-}
+enum FoodCategory { Noodles, Rice, Snack, Beverage }
 
 //food addons
 class Addons {

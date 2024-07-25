@@ -16,7 +16,7 @@ class Restaurant extends ChangeNotifier {
             "Assets/Images/panmee.jpg",
         // "C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/chillipanmee.jpg",
         price: 7.50,
-        category: FoodCategory.PanMee,
+        category: FoodCategory.Noodles,
         availableAddons: [
           Addons(name: "Dry", price: 0.00),
           Addons(name: "Add on noodles", price: 8.50),
@@ -29,7 +29,7 @@ class Restaurant extends ChangeNotifier {
             // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/chillipanmee.jpg"
             "Assets/Images/chillipanmee.jpg",
         price: 9.00,
-        category: FoodCategory.PanMee,
+        category: FoodCategory.Noodles,
         availableAddons: [
           Addons(name: "Extra spicy", price: 0.00),
           Addons(name: "Add on noodles", price: 1.00),
@@ -41,7 +41,7 @@ class Restaurant extends ChangeNotifier {
             // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/chillipanmee.jpg"
             "Assets/Images/kueyteow.jpg",
         price: 9.00,
-        category: FoodCategory.PanMee,
+        category: FoodCategory.Noodles,
         availableAddons: [
           Addons(name: "Extra spicy", price: 0.00),
           Addons(name: "Add on noodles", price: 1.00),
@@ -56,7 +56,7 @@ class Restaurant extends ChangeNotifier {
             "Fried noodles with a lot of spices which might make someone diarrhea, but it's considered cheap in NEUC, so who cares?",
         imagePath: "Assets/Images/meegoreng.jpg",
         price: 6.00,
-        category: FoodCategory.MakMak,
+        category: FoodCategory.Noodles,
         availableAddons: [
           Addons(name: "Extra spicy", price: 0.00),
           Addons(name: "Add on noodles", price: 1.00),
