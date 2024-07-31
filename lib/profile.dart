@@ -96,117 +96,240 @@ class _MyProfileState extends State<MyProfile> {
             ),
             SizedBox(
               height: 10,
-            ), // Add some space between the text and the button
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Cart',
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Cartpage(),
+                  ),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Cart',
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Cartpage(),
-                          ),
-                        );
-                      },
-                      icon: Icon(Icons.arrow_forward_ios))
-                ],
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Icon(Icons.arrow_forward_ios)
+                  ],
+                ),
               ),
             ),
             SizedBox(
               height: 10,
             ),
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Status',
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Cartpage(),
+                  ),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Status',
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                  IconButton(
-                      onPressed: () {
-                        //to status page
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => Cartpage(),
-                        //   ),
-                        // );
-                      },
-                      icon: Icon(Icons.arrow_forward_ios))
-                ],
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Icon(Icons.arrow_forward_ios)
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Cartpage(),
+                  ),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'FAQ',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Icon(Icons.arrow_forward_ios)
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Cartpage(),
+                  ),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Sign Out',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Icon(Icons.arrow_forward_ios)
+                  ],
+                ),
               ),
             ),
             SizedBox(
               height: 10,
             ),
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('FAQ',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                  IconButton(
-                      onPressed: () {
-                        // to FAQ page
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => Cartpage(),
-                        //   ),
-                        // );
-                      },
-                      icon: Icon(Icons.arrow_forward_ios))
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Sign Out',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginPage(
-                              showRegisterPage: () {},
-                            ),
-                          ),
-                        );
-                      },
-                      icon: Icon(Icons.arrow_forward_ios))
-                ],
-              ),
-            ),
+            // Add some space between the text and the button
+            // Container(
+            //   padding: EdgeInsets.all(10),
+            //   decoration: BoxDecoration(
+            //       color: Colors.white, borderRadius: BorderRadius.circular(10)),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       const Text('Cart',
+            //           style:
+            //               TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            //       IconButton(
+            //           onPressed: () {
+            //             Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                 builder: (context) => Cartpage(),
+            //               ),
+            //             );
+            //           },
+            //           icon: Icon(Icons.arrow_forward_ios))
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // Container(
+            //   padding: EdgeInsets.all(10),
+            //   decoration: BoxDecoration(
+            //       color: Colors.white, borderRadius: BorderRadius.circular(10)),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Text('Status',
+            //           style:
+            //               TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            //       IconButton(
+            //           onPressed: () {
+            //             //to status page
+            //             // Navigator.push(
+            //             //   context,
+            //             //   MaterialPageRoute(
+            //             //     builder: (context) => Cartpage(),
+            //             //   ),
+            //             // );
+            //           },
+            //           icon: Icon(Icons.arrow_forward_ios))
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // Container(
+            //   padding: EdgeInsets.all(10),
+            //   decoration: BoxDecoration(
+            //       color: Colors.white, borderRadius: BorderRadius.circular(10)),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Text('FAQ',
+            //           style:
+            //               TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            //       IconButton(
+            //           onPressed: () {
+            //             // to FAQ page
+            //             // Navigator.push(
+            //             //   context,
+            //             //   MaterialPageRoute(
+            //             //     builder: (context) => Cartpage(),
+            //             //   ),
+            //             // );
+            //           },
+            //           icon: Icon(Icons.arrow_forward_ios))
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 10,
+            // ),
+            // Container(
+            //   padding: EdgeInsets.all(10),
+            //   decoration: BoxDecoration(
+            //       color: Colors.white, borderRadius: BorderRadius.circular(10)),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Text('Sign Out',
+            //           style:
+            //               TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            //       IconButton(
+            //           onPressed: () {
+            //             Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                 builder: (context) => LoginPage(
+            //                   showRegisterPage: () {},
+            //                 ),
+            //               ),
+            //             );
+            //           },
+            //           icon: Icon(Icons.arrow_forward_ios))
+            //     ],
+            //   ),
+            // ),
             SizedBox(
               height: 10,
             ),
             // GestureDetector(
-            //   onTap: _signOut,
+            //   onTap: () {},
             //   child: Container(
             //     padding: EdgeInsets.all(10),
             //     decoration: BoxDecoration(
