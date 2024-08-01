@@ -76,7 +76,7 @@ class _RegisterpageState extends State<Registerpage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: Text('Error!'),
           content: Text(message),
           actions: [
             TextButton(
@@ -136,7 +136,7 @@ class _RegisterpageState extends State<Registerpage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: Text('Error!'),
           content:
               Text(message ?? 'An unknown error occurred. Please try again.'),
           actions: [

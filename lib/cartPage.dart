@@ -16,9 +16,9 @@ class Cartpage extends StatelessWidget {
       if (userCart == null || userCart.isEmpty) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text("Cart"),
-            foregroundColor: const Color(0xFFED4545),
-            backgroundColor: Colors.grey[100],
+            title: const Text("C A R T"),
+            foregroundColor: Colors.white,
+            backgroundColor: const Color(0xFFED4545),
             actions: [
               //clear cart button
               IconButton(
@@ -54,7 +54,7 @@ class Cartpage extends StatelessWidget {
       //scaffold UI
       return Scaffold(
         appBar: AppBar(
-          title: const Text("Cart"),
+          title: const Text("C A R T"),
           backgroundColor: Color(0xFFED4545),
           foregroundColor: Colors.white,
           actions: [

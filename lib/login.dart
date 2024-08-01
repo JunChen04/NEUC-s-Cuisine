@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:neuc_cuisine/forgotPasswordPage.dart';
 import 'package:neuc_cuisine/homePage.dart';
 import 'package:neuc_cuisine/registerPage.dart';
 
@@ -21,7 +22,7 @@ class _LoginpageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: Text('Error!'),
           content: Text(message),
           actions: [
             TextButton(
@@ -81,7 +82,7 @@ class _LoginpageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: Text('Error!'),
           content: Text(message),
           actions: [
             TextButton(
@@ -165,6 +166,8 @@ class _LoginpageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(height: 5),
+
+                //email textfield
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Padding(
@@ -184,6 +187,8 @@ class _LoginpageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(height: 10),
+
+                //password textfield
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Padding(
@@ -204,6 +209,8 @@ class _LoginpageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(height: 10),
+
+                //login button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: GestureDetector(
@@ -226,10 +233,20 @@ class _LoginpageState extends State<LoginPage> {
                     ),
                   ),
                 ),
+                //forgot password
                 SizedBox(height: 10),
-                Text(
-                  'Forgot password',
-                  style: TextStyle(color: Color(0xFFED4545)),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (contect) {
+                        return ForgotPasswordPage();
+                      },
+                    ));
+                  },
+                  child: Text(
+                    'Forgot password',
+                    style: TextStyle(color: Color(0xFFED4545)),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
