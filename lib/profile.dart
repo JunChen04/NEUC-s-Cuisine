@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:neuc_cuisine/cartPage.dart';
+import 'package:neuc_cuisine/feedbackPage.dart';
 import 'package:neuc_cuisine/homePage.dart';
 // Import your login page
 import 'package:neuc_cuisine/login.dart';
 
 class MyProfile extends StatefulWidget {
-  const MyProfile({super.key});
+  final String email;
+  const MyProfile({super.key, required this.email});
 
   @override
   State<MyProfile> createState() => _MyProfileState();
@@ -177,6 +179,38 @@ class _MyProfileState extends State<MyProfile> {
                   children: [
                     Text(
                       'FAQ',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Icon(Icons.arrow_forward_ios)
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FeedbackPage(
+                      email: widget.email,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Feedback',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),

@@ -2,15 +2,45 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:neuc_cuisine/components/myDrawTile.dart';
+import 'package:neuc_cuisine/login.dart';
 import 'package:neuc_cuisine/profile.dart';
+
 // import 'package:neuc_cuisine/settingsPage.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({super.key});
+  final String email;
+  final VoidCallback showLoginPage;
+  MyDrawer({super.key, required this.email, required this.showLoginPage});
+
+  // final user = FirebaseAuth.instance.currentUser;
 
   //sign user out
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
+  // void signUserOut(BuildContext context) {
+  //   FirebaseAuth.instance.signOut();
+  // }
+  // Future<void> signOut() async {
+  //   return await FirebaseAuth.instance.signOut();
+  //   Navigator.pop(context);
+  // }
+  void signUserOut(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginPage(
+            showRegisterPage: () {},
+          ),
+        ),
+      );
+    } catch (e) {
+      print('Error signing out: ${e.toString()}');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error signing out. Please try again.'),
+        ),
+      );
+    }
   }
 
   @override
@@ -53,7 +83,9 @@ class MyDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const MyProfile(),
+                  builder: (context) => MyProfile(
+                    email: email,
+                  ),
                 ),
               );
             },
@@ -65,7 +97,7 @@ class MyDrawer extends StatelessWidget {
           MyDrawTile(
             text: "L O G O U T",
             icon: Icons.logout,
-            onTap: signUserOut,
+            onTap: () => signUserOut(context),
           ),
 
           SizedBox(height: 25),

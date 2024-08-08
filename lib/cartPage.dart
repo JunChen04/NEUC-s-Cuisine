@@ -19,25 +19,32 @@ class Cartpage extends StatelessWidget {
             title: const Text("C A R T"),
             foregroundColor: Colors.white,
             backgroundColor: const Color(0xFFED4545),
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back_ios_new),
+            ),
             actions: [
-              //clear cart button
+              // Clear cart button
               IconButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                              title: const Text(
-                                "Your cart already empty.",
-                              ),
-                              actions: [
-                                //cancel button
-                                TextButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: const Text("Cancel")),
-                              ],
-                            ));
-                  },
-                  icon: const Icon(Icons.delete))
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text("Your cart is already empty."),
+                      actions: [
+                        // Cancel button
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text("Cancel"),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.delete),
+              ),
             ],
           ),
           backgroundColor: Colors.grey[200],
@@ -57,32 +64,41 @@ class Cartpage extends StatelessWidget {
           title: const Text("C A R T"),
           backgroundColor: Color(0xFFED4545),
           foregroundColor: Colors.white,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios_new),
+          ),
           actions: [
-            //clear cart button
             IconButton(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                            title: const Text(
-                              "Are you sure you want to clear your cart?",
-                            ),
-                            actions: [
-                              //cancel button
-                              TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: const Text("Cancel")),
-                              //yes
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    restaurant.clearCart();
-                                  },
-                                  child: const Text("Yes"))
-                            ],
-                          ));
-                },
-                icon: const Icon(Icons.delete))
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title:
+                        const Text("Are you sure you want to clear your cart?"),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context); // Close the dialog
+                        },
+                        child: const Text("Cancel"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context); // Close the dialog
+                          restaurant.clearCart(); // Clear the cart
+                          // Optionally show a snack bar or other feedback here
+                        },
+                        child: const Text("Yes"),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              icon: const Icon(Icons.delete),
+            ),
           ],
         ),
         body: Column(
