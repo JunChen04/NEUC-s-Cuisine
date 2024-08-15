@@ -29,7 +29,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
           headers: {
             'Content-Type': 'application/json',
             "Authorization": "privateKey",
-            // 'origin': 'http://localhost'
+            'origin': 'http://localhost'
           },
           body: json.encode(
             {
