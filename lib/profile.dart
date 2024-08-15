@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:neuc_cuisine/cartPage.dart';
+import 'package:neuc_cuisine/faq.dart';
 import 'package:neuc_cuisine/feedbackPage.dart';
 import 'package:neuc_cuisine/homePage.dart';
 // Import your login page
 import 'package:neuc_cuisine/login.dart';
+import 'package:neuc_cuisine/personalDetails.dart';
+import 'package:neuc_cuisine/status.dart';
 
 class MyProfile extends StatefulWidget {
   final String email;
@@ -57,7 +60,12 @@ class _MyProfileState extends State<MyProfile> {
                 ),
                 TextButton(
                   onPressed: () {
-                    //profile page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PersonalDetails(),
+                      ),
+                    );
                   },
                   child: Text(
                     'Change',
@@ -134,7 +142,7 @@ class _MyProfileState extends State<MyProfile> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Cartpage(),
+                    builder: (context) => Status(),
                   ),
                 );
               },
@@ -165,7 +173,7 @@ class _MyProfileState extends State<MyProfile> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Cartpage(),
+                    builder: (context) => Faq(),
                   ),
                 );
               },
