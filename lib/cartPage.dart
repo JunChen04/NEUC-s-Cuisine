@@ -81,15 +81,14 @@ class Cartpage extends StatelessWidget {
                     actions: [
                       TextButton(
                         onPressed: () {
-                          Navigator.pop(context); // Close the dialog
+                          Navigator.pop(context);
                         },
                         child: const Text("Cancel"),
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.pop(context); // Close the dialog
-                          restaurant.clearCart(); // Clear the cart
-                          // Optionally show a snack bar or other feedback here
+                          Navigator.pop(context);
+                          restaurant.clearCart();
                         },
                         child: const Text("Yes"),
                       ),

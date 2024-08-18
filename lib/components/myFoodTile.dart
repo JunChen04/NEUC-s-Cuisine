@@ -4,25 +4,39 @@ import 'package:neuc_cuisine/models/food.dart';
 
 class Myfoodtile extends StatelessWidget {
   final Food food;
-  final void Function()? onTap;
+  final VoidCallback? onTap;
 
   const Myfoodtile({
-    super.key,
+    Key? key,
     required this.food,
-    required this.onTap,
-  });
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: onTap,
-          child: Padding(
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Padding(
             padding: const EdgeInsets.all(15.0),
             child: Row(
               children: [
-                //text food details
+                // Food image
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.network(
+                    food.imagePath,
+                    height: 120,
+                    width: 100,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Center(child: Text('Image not available'));
+                    },
+                  ),
+                ),
+                const SizedBox(width: 15),
+                // Food details
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,12 +49,10 @@ class Myfoodtile extends StatelessWidget {
                             fontSize: 20),
                       ),
                       Text(
-                        "RM " + food.price.toString(),
+                        "RM " + food.price.toStringAsFixed(2),
                         style: GoogleFonts.allerta(color: Color(0xFFED4545)),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       Text(
                         food.description,
                         style: GoogleFonts.kanit(
@@ -49,28 +61,18 @@ class Myfoodtile extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  width: 15,
-                ),
-                //food images
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    food.imagePath,
-                    height: 120,
-                    width: 100,
-                  ),
-                ),
               ],
             ),
           ),
-        ),
-        Divider(
-          color: Color(0xFFED4545),
-          endIndent: 25,
-          indent: 25,
-        )
-      ],
+          const Divider(
+            color: Color(0xFFED4545),
+            thickness: 1.5,
+            height: 15,
+            indent: 15,
+            endIndent: 15,
+          ),
+        ],
+      ),
     );
   }
 }

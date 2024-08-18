@@ -1,33 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:neuc_cuisine/models/food.dart';
 import 'package:neuc_cuisine/models/restaurant.dart';
 import 'package:provider/provider.dart';
 
-class Foodpage extends StatefulWidget {
+class FoodPage extends StatefulWidget {
   final Food food;
   final Map<Addons, bool> selectedAddons = {};
 
-  Foodpage({
-    super.key,
+  FoodPage({
+    Key? key,
     required this.food,
-  }) {
-//initialize selected addons to be false
+  }) : super(key: key) {
     for (Addons addon in food.availableAddons) {
       selectedAddons[addon] = false;
     }
   }
 
   @override
-  State<Foodpage> createState() => _FoodpageState();
+  State<FoodPage> createState() => _FoodPageState();
 }
 
-class _FoodpageState extends State<Foodpage> {
-  //method to add cart
+class _FoodPageState extends State<FoodPage> {
   void addToCart(Food food, Map<Addons, bool> selectedAddons) {
-    //close current food page to back to menu
     Navigator.pop(context);
 
-    //format selected addons
     List<Addons> currentlySelectedAddons = [];
     for (Addons addon in widget.food.availableAddons) {
       if (widget.selectedAddons[addon] == true) {
@@ -35,7 +32,6 @@ class _FoodpageState extends State<Foodpage> {
       }
     }
 
-    //add to cart
     context.read<Restaurant>().addToCart(food, currentlySelectedAddons);
   }
 
@@ -44,97 +40,74 @@ class _FoodpageState extends State<Foodpage> {
     return Stack(
       children: [
         Scaffold(
+          backgroundColor: Colors.grey[100],
           body: SingleChildScrollView(
             child: Column(
               children: [
-                //food image
                 SizedBox(
                   width: double.infinity,
-                  height: 300, // Set the desired height
-                  child: Image.asset(
-                    widget.food.imagePath,
-                    fit: BoxFit.cover, // Ensure the image covers the box
+                  height: 300,
+                  child: Image.network(
+                    widget.food.imagePath, // Ensure this is the URL
+                    fit: BoxFit.cover,
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      //food name
                       Text(
                         widget.food.name,
-                        style: const TextStyle(
+                        style: GoogleFonts.allerta(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
                       ),
-
-                      //food price
                       Text(
-                        "RM " + widget.food.price.toString(),
-                        style: const TextStyle(
+                        "RM ${widget.food.price.toStringAsFixed(2)}",
+                        style: GoogleFonts.allerta(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
                       ),
-
-                      const SizedBox(
-                        height: 10,
-                      ),
-
-                      //food descriptions
+                      const SizedBox(height: 10),
                       Text(
                         widget.food.description,
+                        style: GoogleFonts.allerta(
+                          fontWeight: FontWeight.w100,
+                        ),
                       ),
-
-                      const SizedBox(
-                        height: 10,
-                      ),
-
-                      Divider(
-                        color: Color(0xFFED4545),
-                      ),
-
-                      const SizedBox(
-                        height: 10,
-                      ),
-
-                      //addons
-                      Text(
-                        "Add-ons",
-                        style: TextStyle(
+                      const SizedBox(height: 10),
+                      Divider(color: Color(0xFFED4545)),
+                      const SizedBox(height: 10),
+                      Text("Add-ons",
+                          style: GoogleFonts.allerta(
                             color: Colors.grey,
                             fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-
-                      const SizedBox(
-                        height: 10,
-                      ),
-
+                            fontWeight: FontWeight.bold,
+                          )),
+                      const SizedBox(height: 10),
                       Container(
                         decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFFED4545),
-                            ),
-                            borderRadius: BorderRadius.circular(8)),
+                          border: Border.all(color: Color(0xFFED4545)),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                         child: ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           padding: EdgeInsets.zero,
                           itemCount: widget.food.availableAddons.length,
                           itemBuilder: (context, index) {
-                            //get individual addon
                             Addons addon = widget.food.availableAddons[index];
-
-                            //return checkbox UI
                             return CheckboxListTile(
-                              title: Text(addon.name),
+                              title: Text(
+                                addon.name,
+                                style: GoogleFonts.allerta(),
+                              ),
                               subtitle: Text(
-                                'RM ' + addon.price.toString(),
-                                style: TextStyle(color: Colors.grey),
+                                'RM ${addon.price.toStringAsFixed(2)}',
+                                style: GoogleFonts.allerta(color: Colors.grey),
                               ),
                               value: widget.selectedAddons[addon],
                               onChanged: (bool? value) {
@@ -145,36 +118,32 @@ class _FoodpageState extends State<Foodpage> {
                             );
                           },
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 50,
-                ),
-                //button add to cart
+                const SizedBox(height: 50),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 35),
                   child: ElevatedButton(
                     onPressed: () =>
                         addToCart(widget.food, widget.selectedAddons),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFED4545),
-                        foregroundColor: Colors.white,
-                        textStyle: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                        minimumSize: Size(400, 60)),
-                    child: Text('Add to cart'),
+                      backgroundColor: Color(0xFFED4545),
+                      foregroundColor: Colors.white,
+                      textStyle: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      minimumSize: const Size(400, 60),
+                    ),
+                    child: const Text('Add to cart'),
                   ),
                 ),
-
-                const SizedBox(
-                  height: 25,
-                ),
+                const SizedBox(height: 25),
               ],
             ),
           ),

@@ -1,7 +1,7 @@
 class Food {
   final String name;
   final String description;
-  final String imagePath; //lib/img/panmee.jpg
+  final String imagePath;
   final double price;
   final FoodCategory category;
   List<Addons> availableAddons;

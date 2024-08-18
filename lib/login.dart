@@ -98,15 +98,6 @@ class _LoginpageState extends State<LoginPage> {
   }
 
   void loginUser() async {
-    // showDialog(
-    //   context: context,
-    //   builder: (context) {
-    //     return Center(
-    //       child: CircularProgressIndicator(),
-    //     );
-    //   },
-    // );
-
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
       _showErrorDialog('All fields are required');
     } else {

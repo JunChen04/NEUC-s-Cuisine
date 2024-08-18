@@ -5,67 +5,67 @@ import 'package:neuc_cuisine/models/food.dart';
 
 class Restaurant extends ChangeNotifier {
   // List of menu
-  final List<Food> _menu = [
-    // Panmee
-    Food(
-        name: "Pan Mee",
-        description:
-            "Traditional Pan Mee which is also the noodles that you can eat in NEUC",
-        imagePath:
-            // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/panmee.jpg"
-            "Assets/Images/panmee.jpg",
-        // "C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/chillipanmee.jpg",
-        price: 7.50,
-        category: FoodCategory.Noodles,
-        availableAddons: [
-          Addons(name: "Dry", price: 0.00),
-          Addons(name: "Add on noodles", price: 8.50),
-        ]),
-    Food(
-        name: "Chilli's Pan Mee",
-        description:
-            "Traditional spicy Pan Mee with a lot of chili, once a wise man said: If you can't eat spicy then you are not Malaysian",
-        imagePath:
-            // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/chillipanmee.jpg"
-            "Assets/Images/chillipanmee.jpg",
-        price: 9.00,
-        category: FoodCategory.Noodles,
-        availableAddons: [
-          Addons(name: "Extra spicy", price: 0.00),
-          Addons(name: "Add on noodles", price: 1.00),
-        ]),
-    Food(
-        name: "Kuew Teow Soup",
-        description: "Kuey Teow Soup, nothing special, but no choice",
-        imagePath:
-            // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/chillipanmee.jpg"
-            "Assets/Images/kueyteow.jpg",
-        price: 9.00,
-        category: FoodCategory.Noodles,
-        availableAddons: [
-          Addons(name: "Extra spicy", price: 0.00),
-          Addons(name: "Add on noodles", price: 1.00),
-        ]),
+  // final List<Food> _menu = [
+  //   // Panmee
+  //   Food(
+  //       name: "Pan Mee",
+  //       description:
+  //           "Traditional Pan Mee which is also the noodles that you can eat in NEUC",
+  //       imagePath:
+  //           // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/panmee.jpg"
+  //           "Assets/Images/panmee.jpg",
+  //       // "C:/Users/Cheong Wei San/Desktop/NEUC_CUISINE/lib/images/chillipanmee.jpg",
+  //       price: 7.50,
+  //       category: FoodCategory.Noodles,
+  //       availableAddons: [
+  //         Addons(name: "Dry", price: 0.00),
+  //         Addons(name: "Add on noodles", price: 8.50),
+  //       ]),
+  //   Food(
+  //       name: "Chilli's Pan Mee",
+  //       description:
+  //           "Traditional spicy Pan Mee with a lot of chili, once a wise man said: If you can't eat spicy then you are not Malaysian",
+  //       imagePath:
+  //           // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/chillipanmee.jpg"
+  //           "Assets/Images/chillipanmee.jpg",
+  //       price: 9.00,
+  //       category: FoodCategory.Noodles,
+  //       availableAddons: [
+  //         Addons(name: "Extra spicy", price: 0.00),
+  //         Addons(name: "Add on noodles", price: 1.00),
+  //       ]),
+  //   Food(
+  //       name: "Kuew Teow Soup",
+  //       description: "Kuey Teow Soup, nothing special, but no choice",
+  //       imagePath:
+  //           // "C:/Users/Cheong Wei San/Desktop/FirstApp/first_app/lib/images/chillipanmee.jpg"
+  //           "Assets/Images/kueyteow.jpg",
+  //       price: 9.00,
+  //       category: FoodCategory.Noodles,
+  //       availableAddons: [
+  //         Addons(name: "Extra spicy", price: 0.00),
+  //         Addons(name: "Add on noodles", price: 1.00),
+  //       ]),
 
-    // Beverages
+  //   // Beverages
 
-    // Makmak
-    Food(
-        name: "Mee Goreng",
-        description:
-            "Fried noodles with a lot of spices which might make someone diarrhea, but it's considered cheap in NEUC, so who cares?",
-        imagePath: "Assets/Images/meegoreng.jpg",
-        price: 6.00,
-        category: FoodCategory.Noodles,
-        availableAddons: [
-          Addons(name: "Extra spicy", price: 0.00),
-          Addons(name: "Add on noodles", price: 1.00),
-          Addons(name: "Add on Sunny-side up egg", price: 1.00),
-        ]),
+  //   // Makmak
+  //   Food(
+  //       name: "Mee Goreng",
+  //       description:
+  //           "Fried noodles with a lot of spices which might make someone diarrhea, but it's considered cheap in NEUC, so who cares?",
+  //       imagePath: "Assets/Images/meegoreng.jpg",
+  //       price: 6.00,
+  //       category: FoodCategory.Noodles,
+  //       availableAddons: [
+  //         Addons(name: "Extra spicy", price: 0.00),
+  //         Addons(name: "Add on noodles", price: 1.00),
+  //         Addons(name: "Add on Sunny-side up egg", price: 1.00),
+  //       ]),
 
-    // Rice
-  ];
-
+  //   // Rice
+  // ];
+  final List<Food> _menu = [];
   /*
   GETTERS
   */
