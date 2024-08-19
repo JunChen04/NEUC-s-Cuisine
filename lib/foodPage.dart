@@ -40,7 +40,7 @@ class _FoodPageState extends State<FoodPage> {
     return Stack(
       children: [
         Scaffold(
-          backgroundColor: Colors.grey[100],
+          backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Column(
               children: [

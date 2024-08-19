@@ -40,7 +40,7 @@ class _MyProfileState extends State<MyProfile> {
           },
         ),
         title: Text(
-          'S E T T I N G',
+          'M O R E',
         ),
       ),
       body: SingleChildScrollView(
@@ -225,36 +225,36 @@ class _MyProfileState extends State<MyProfile> {
               SizedBox(
                 height: 10,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Cartpage(),
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Sign Out',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                      Icon(Icons.arrow_forward_ios)
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => Cartpage(),
+              //       ),
+              //     );
+              //   },
+              //   child: Container(
+              //     padding: EdgeInsets.all(10),
+              //     decoration: BoxDecoration(
+              //         color: Colors.white,
+              //         borderRadius: BorderRadius.circular(10)),
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Text(
+              //           'Sign Out',
+              //           style: TextStyle(
+              //               fontWeight: FontWeight.bold, fontSize: 20),
+              //         ),
+              //         Icon(Icons.arrow_forward_ios)
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 10,
+              // ),
               // Add some space between the text and the button
               // Container(
               //   padding: EdgeInsets.all(10),

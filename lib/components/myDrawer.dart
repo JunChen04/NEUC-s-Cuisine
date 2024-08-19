@@ -76,8 +76,8 @@ class MyDrawer extends StatelessWidget {
 
           //settings list tile
           MyDrawTile(
-            text: "S E T T I N G S",
-            icon: Icons.settings,
+            text: "M O R E",
+            icon: Icons.more,
             onTap: () {
               Navigator.pop(context);
               Navigator.push(
