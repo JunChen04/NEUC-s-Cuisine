@@ -113,7 +113,9 @@ class _MyProfileState extends State<MyProfile> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PersonalDetails(email: widget.email),
+                              builder: (context) => PersonalDetails(
+                                email: widget.email,
+                              ),
                             ),
                           );
                         },

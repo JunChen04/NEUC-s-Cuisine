@@ -1,5 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:neuc_cuisine/utils.dart';
 
 class PersonalDetails extends StatefulWidget {
   final String email;
@@ -12,6 +16,15 @@ class PersonalDetails extends StatefulWidget {
 class PersonalDetailsState extends State<PersonalDetails> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+
+  Uint8List? _image;
+
+  void selectImage() async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = img;
+    });
+  }
 
   // Function to update user data
   Future<void> updateUserDetails() async {
@@ -46,14 +59,11 @@ class PersonalDetailsState extends State<PersonalDetails> {
         // Only update Firestore if there is something to update
         if (updatedData.isNotEmpty) {
           await userDoc.update(updatedData);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Details updated successfully!')),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('No changes to update.')),
-          );
         }
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Details updated successfully!')),
+        );
 
         // Go back to the previous screen after saving
         Navigator.pop(context);
