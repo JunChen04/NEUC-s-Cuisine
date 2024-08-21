@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:neuc_cuisine/OrderConfirmationPage.dart';
+import 'package:neuc_cuisine/models/restaurant.dart';
+import 'package:neuc_cuisine/paymentButton.dart';
+import 'package:provider/provider.dart';
 
 class CheckOut extends StatefulWidget {
-  CheckOut({super.key});
+  final double totalPrice;
+
+  CheckOut({super.key, required this.totalPrice});
 
   @override
   State<CheckOut> createState() => _CheckOutState();
@@ -67,12 +73,12 @@ class _CheckOutState extends State<CheckOut> {
                           });
                         },
                       ),
-                      Icon(Icons.credit_card),
+                      Icon(Icons.money),
                       SizedBox(
                         width: 5,
                       ),
                       Text(
-                        "Card",
+                        "Cash",
                         style: TextStyle(fontSize: 16),
                       )
                     ],
@@ -96,7 +102,7 @@ class _CheckOutState extends State<CheckOut> {
                         width: 5,
                       ),
                       Text(
-                        "Bank Account",
+                        "Online Transfer",
                         style: TextStyle(fontSize: 16),
                       )
                     ],
@@ -165,12 +171,20 @@ class _CheckOutState extends State<CheckOut> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Total",
-                  style: TextStyle(fontSize: 25),
+                  "Total :",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
                 Text(
-                  "23,000",
-                  style: TextStyle(fontSize: 30),
+                  "\RM${widget.totalPrice.toStringAsFixed(2)}",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
               ],
             ),
@@ -181,7 +195,49 @@ class _CheckOutState extends State<CheckOut> {
               child: SizedBox(
                 width: 250.0, // Set the desired width here
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_value == 1) {
+                      // Cash selected, clear the cart and navigate to order confirmation page
+                      final restaurant =
+                          Provider.of<Restaurant>(context, listen: false);
+                      restaurant.clearCart();
+                      // Cash selected, navigate to order confirmation page
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Reminder"),
+                            content: Text("Please pay at the counter."),
+                            actions: <Widget>[
+                              TextButton(
+                                child: Text("OK"),
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pop(); // Close the dialog
+                                  // Navigate to OrderConfirmationPage
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          OrderConfirmationPage(),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    } else if (_value == 2) {
+                      // Online Transfer selected, proceed to payment page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => payment(),
+                        ),
+                      );
+                    }
+                  },
                   color: Color(0xFFED4545), // Button color
                   textColor: Colors.white, // Button text color
                   padding: EdgeInsets.all(16.0), // Button padding

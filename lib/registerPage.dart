@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -17,8 +18,9 @@ class _RegisterpageState extends State<Registerpage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   final _phoneController = TextEditingController();
+  final _nameController = TextEditingController();
 
-  void registerUser() async {
+  Future registerUser() async {
     // Show loading circle
     // showDialog(
     //   context: context,
@@ -32,7 +34,8 @@ class _RegisterpageState extends State<Registerpage> {
     if (_emailController.text.isEmpty ||
         _passwordController.text.isEmpty ||
         _confirmPasswordController.text.isEmpty ||
-        _phoneController.text.isEmpty) {
+        _phoneController.text.isEmpty ||
+        _nameController.text.isEmpty) {
       _showErrorDialog('All fields are required');
       return;
     } else if (_passwordController.text != _confirmPasswordController.text) {
@@ -45,6 +48,13 @@ class _RegisterpageState extends State<Registerpage> {
           email: _emailController.text,
           password: _passwordController.text,
         );
+
+        await addDetails(
+          _nameController.text.trim(),
+          _emailController.text.trim(),
+          _phoneController.text.trim(),
+        );
+
         // If successful, pop the loading dialog
         // Navigator.pop(context);
         Navigator.pushReplacement(
@@ -68,6 +78,21 @@ class _RegisterpageState extends State<Registerpage> {
           generalErrorMessage(e.message);
         }
       }
+    }
+  }
+
+  Future addDetails(String Name, String Email, String Phone) async {
+    // add user details
+    try {
+      await FirebaseFirestore.instance.collection('users').add({
+        'Name': Name,
+        'Email': Email,
+        'Phone': Phone,
+      });
+      print("User details added successfully.");
+    } catch (e) {
+      print("Failed to add user details: $e");
+      _showErrorDialog('Failed to add user details. Please try again.');
     }
   }
 
@@ -158,6 +183,7 @@ class _RegisterpageState extends State<Registerpage> {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     _phoneController.dispose();
+    _nameController.dispose();
     super.dispose();
   }
 
@@ -203,6 +229,25 @@ class _RegisterpageState extends State<Registerpage> {
                   ),
                 ),
                 SizedBox(height: 5),
+                // Name
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: TextField(
+                      controller: _nameController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: 'Name',
+                        hintStyle: TextStyle(color: Colors.grey[300]),
+                        labelText: 'Name',
+                        labelStyle: TextStyle(color: Colors.grey),
+                        prefixIcon: Icon(Icons.person),
+                        prefixIconColor: Color(0xFFED4545),
+                      ),
+                    ),
+                  ),
+                ),
                 // Email
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),

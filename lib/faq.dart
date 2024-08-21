@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:neuc_cuisine/faq_question.dart';
 import 'package:neuc_cuisine/faq_question.dart';
-import 'package:neuc_cuisine/faq_question2.dart';
 import 'package:neuc_cuisine/faq_question3.dart';
 import 'package:neuc_cuisine/faq_question4.dart';
 
@@ -64,17 +63,6 @@ class Faq extends StatelessWidget {
                         );
                       },
                       child: Text("How to order?"),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FaqQuestion2(),
-                          ),
-                        );
-                      },
-                      child: Text("How to make changes?"),
                     ),
                     Text(
                       "About Account",

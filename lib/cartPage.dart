@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:neuc_cuisine/cartItems.dart';
 import 'package:neuc_cuisine/checkOut.dart';
 import 'package:neuc_cuisine/components/myCartTile.dart';
 import 'package:neuc_cuisine/models/restaurant.dart';
+import 'package:neuc_cuisine/status.dart';
 import 'package:provider/provider.dart';
 
 class Cartpage extends StatelessWidget {
   const Cartpage({super.key});
+
+  double getTotalCartPrice(List<CartItem> cart) {
+    return cart.fold(0.0, (sum, item) => sum + item.totalPrice);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +63,8 @@ class Cartpage extends StatelessWidget {
           ),
         );
       }
+
+      final totalCartPrice = getTotalCartPrice(userCart);
 
       //scaffold UI
       return Scaffold(
@@ -118,26 +126,43 @@ class Cartpage extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CheckOut(),
-                    ),
-                  ); //to payment page
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFED4545),
-                    foregroundColor: Colors.white,
-                    textStyle: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    minimumSize: Size(400, 60)),
-                child: Text('Checkout'),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // // Display total price
+                  // Text(
+                  //   'Total: \$${totalCartPrice.toStringAsFixed(2)}',
+                  //   style: const TextStyle(
+                  //     fontSize: 20,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Colors.black,
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              CheckOut(totalPrice: totalCartPrice),
+                          // Status(cartItems: userCart),
+                        ),
+                      ); //to payment page
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFED4545),
+                        foregroundColor: Colors.white,
+                        textStyle: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                        minimumSize: Size(400, 60)),
+                    child: Text('Checkout'),
+                  ),
+                ],
               ),
             ),
             const SizedBox(
