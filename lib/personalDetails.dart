@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class PersonalDetails extends StatefulWidget {
-  const PersonalDetails({super.key});
+  final String email;
+  const PersonalDetails({super.key, required this.email});
 
   @override
   State<PersonalDetails> createState() => PersonalDetailsState();
@@ -13,57 +13,60 @@ class PersonalDetailsState extends State<PersonalDetails> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
 
-  final String userId = FirebaseAuth.instance.currentUser!.uid;
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchUserData();
-  }
-
-  Future<void> _fetchUserData() async {
+  // Function to update user data
+  Future<void> updateUserDetails() async {
     try {
-      DocumentSnapshot doc = await FirebaseFirestore.instance
+      // Use the email passed from the previous page
+      String email = widget.email;
+
+      // Query the Firestore to get the document with the matching email
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('users')
-          .doc(userId)
+          .where('Email',
+              isEqualTo: email) // Make sure the field name matches Firestore
           .get();
 
-      if (doc.exists) {
-        setState(() {
-          nameController.text = doc.get('Name') ?? '';
-          phoneController.text = doc.get('Phone') ?? '';
-        });
+      if (querySnapshot.docs.isNotEmpty) {
+        // Get the document reference
+        DocumentReference userDoc = querySnapshot.docs.first.reference;
+
+        // Create a map to hold the updated fields
+        Map<String, dynamic> updatedData = {};
+
+        // Check if name field is not empty and add to the update map
+        if (nameController.text.isNotEmpty) {
+          updatedData['Name'] = nameController.text.trim();
+        }
+
+        // Check if phone field is not empty and add to the update map
+        if (phoneController.text.isNotEmpty) {
+          updatedData['Phone'] = phoneController.text.trim();
+        }
+
+        // Only update Firestore if there is something to update
+        if (updatedData.isNotEmpty) {
+          await userDoc.update(updatedData);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Details updated successfully!')),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('No changes to update.')),
+          );
+        }
+
+        // Go back to the previous screen after saving
+        Navigator.pop(context);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('User not found.')),
+        );
       }
     } catch (e) {
-      print("Error fetching user data: $e");
-    }
-  }
-
-  Future<void> _updateUserData() async {
-    final String newName = nameController.text.trim();
-    final String newPhone = phoneController.text.trim();
-
-    try {
-      Map<String, dynamic> updates = {};
-
-      if (newName.isNotEmpty) {
-        updates['Name'] = newName;
-      }
-
-      if (newPhone.isNotEmpty) {
-        updates['Phone'] = newPhone;
-      }
-
-      if (updates.isNotEmpty) {
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(userId)
-            .update(updates);
-      }
-
-      Navigator.pop(context); // Go back after saving
-    } catch (e) {
-      print("Error updating user data: $e");
+      print('Error updating details: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to update details.')),
+      );
     }
   }
 
@@ -156,7 +159,9 @@ class PersonalDetailsState extends State<PersonalDetails> {
             SizedBox(height: 30),
             Center(
               child: MaterialButton(
-                onPressed: _updateUserData,
+                onPressed: () async {
+                  await updateUserDetails();
+                },
                 color: Color(0xFFED4545),
                 textColor: Colors.white,
                 padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
