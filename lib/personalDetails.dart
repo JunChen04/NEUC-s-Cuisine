@@ -95,101 +95,104 @@ class PersonalDetailsState extends State<PersonalDetails> {
         foregroundColor: Colors.white,
       ),
       backgroundColor: Colors.grey[200],
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 15),
-            Container(
-              height: 300,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.3),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 6),
-                  ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0),
-                      child: TextField(
-                        controller: nameController,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.deepPurple),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          hintText: 'Name',
-                          fillColor: Colors.grey[200],
-                          filled: true,
-                        ),
-                      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 15),
+              Container(
+                height: 300,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 6),
                     ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0),
-                      child: TextField(
-                        controller: phoneController,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.deepPurple),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          hintText: 'Phone',
-                          fillColor: Colors.grey[200],
-                          filled: true,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
                   ],
                 ),
-              ),
-            ),
-            SizedBox(height: 30),
-            Center(
-              child: MaterialButton(
-                onPressed: () async {
-                  await updateUserDetails();
-                },
-                color: Color(0xFFED4545),
-                textColor: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                elevation: 5.0,
-                child: Text(
-                  "Save",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.2,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 25.0),
+                        child: TextField(
+                          controller: nameController,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.deepPurple),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            hintText: 'Name',
+                            fillColor: Colors.grey[200],
+                            filled: true,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 25.0),
+                        child: TextField(
+                          controller: phoneController,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.deepPurple),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            hintText: 'Phone',
+                            fillColor: Colors.grey[200],
+                            filled: true,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                    ],
                   ),
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 30),
+              Center(
+                child: MaterialButton(
+                  onPressed: () async {
+                    await updateUserDetails();
+                  },
+                  color: Color(0xFFED4545),
+                  textColor: Colors.white,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  elevation: 5.0,
+                  child: Text(
+                    "Save",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
