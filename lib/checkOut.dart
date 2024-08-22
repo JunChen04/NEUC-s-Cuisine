@@ -19,6 +19,7 @@ class _CheckOutState extends State<CheckOut> {
 
   @override
   Widget build(BuildContext context) {
+    final restaurant = Provider.of<Restaurant>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -233,7 +234,10 @@ class _CheckOutState extends State<CheckOut> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => payment(),
+                          builder: (context) => payment(
+                            totalPrice: widget.totalPrice,
+                            cartItems: restaurant.cart,
+                          ),
                         ),
                       );
                     }
